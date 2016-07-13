@@ -1,28 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: blacksun
- * Date: 2016/7/13 0013
- * Time: 14:14
- */
 namespace IMooc\Database;
 
 use IMooc\IDatabase;
 
-class MySQLi implements IDatabase{
-
+class MySQLi implements IDatabase
+{
     protected $conn;
 
-    function connect($host,$user,$passwd,$dbname){
-        $conn = mysqli_connect($host,$user,$passwd,$dbname);
+    function connect($host, $user, $passwd, $dbname)
+    {
+        $conn = mysqli_connect($host, $user, $passwd, $dbname);
         $this->conn = $conn;
     }
 
-    function query($sql){
-        return mysqli_query($this->conn,$sql);
+    function query($sql)
+    {
+        return mysqli_query($this->conn, $sql);
     }
 
-    function close(){
+    function close()
+    {
         mysqli_close($this->conn);
     }
 }

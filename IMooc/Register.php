@@ -1,23 +1,26 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: blacksun
- * Date: 2016/7/13 0013
- * Time: 14:06
- */
 namespace IMooc;
 
-class Register{
+class Register
+{
     protected static $objects;
 
-    static function set($alias,$object){
+    static function set($alias, $object)
+    {
         self::$objects[$alias] = $object;
     }
 
-    static function get($name){
-        return self::$objects[$name];
+    static function get($key)
+    {
+        if (!isset(self::$objects[$key]))
+        {
+            return false;
+        }
+        return self::$objects[$key];
     }
-    static function _unset($alias){
+
+    function _unset($alias)
+    {
         unset(self::$objects[$alias]);
     }
 }

@@ -1,39 +1,42 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: blacksun
- * Date: 2016/7/13 0013
- * Time: 13:09
- */
 namespace IMooc;
 
+class Database
+{
+    static private $db;
 
-class Database{
-    private $db;
-
-    private function __construct(){
+    private function __construct()
+    {
 
     }
 
-    static function getInstance(){
-        if(self::$db){
+    static function getInstance()
+    {
+        if (empty(self::$db)) {
+            self::$db = new self;
+            return self::$db;
+        } else {
             return self::$db;
         }
-        else{
-            self::$db = new self();
-            return self::$db;
-        }
-
     }
-    function where($where){
+
+    function where($where)
+    {
         return $this;
     }
 
-    function order($order){
+    function order($order)
+    {
         return $this;
     }
 
-    function limit($limit){
+    function limit($limit)
+    {
         return $this;
+    }
+
+    function query($sql)
+    {
+        echo "SQL: $sql\n";
     }
 }
